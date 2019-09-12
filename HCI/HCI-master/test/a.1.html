@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.css"> -->
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+    <a href="#pop1" class="btn">팝업열기</a>
+    <div class="popup" id="pop1">
+        <a href="#a">닫기</a>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <ul class="one">
+        <li>메뉴1
+            <ul class="two">
+                <li>메뉴1-1</li>
+                <li>메뉴1-2</li>
+                <li>메뉴1-3</li>
+            </ul>
+        </li>
+        <li>메뉴2
+            <ul class="two">
+                <li>메뉴2-1</li>
+                <li>메뉴2-2</li>
+                <li>메뉴2-3</li>
+            </ul>
+        </li>
+        <li>메뉴3
+            <ul class="two">
+                <li>메뉴3-1</li>
+                <li>메뉴3-2</li>
+                <li>메뉴3-3</li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <div class="check">
+        <p>
+            <strong>
+                <span>click</span>
+            </strong>
+        </p>
+    </div>
+
+<div id="result">색이 들어가있는 박스들을 하나씩 클릭해주세요</div>
+
+    <script>
+        $("body").click(function (event) {
+            $("#result").html("무엇을 클릭했을 까요? " + event.target.nodeName);
+        })
+        function handler(event) {
+            // 2단계. handler 의 함수를 작성. handler 함수가 호출이 되면 아래와 같은 행동을 하라.
+            var $target = $(event.target);
+            // 현재 클릭했던 요소가 뭔 요소인지 변수 $target 에 담는다.
+            if ($target.is("li")) {
+                // 만약에 $target 이 담고있었던 요소가 li 가 맞다면!
+                $target.children().toggle();
+                // 클릭했던 바로 그 li 의 자식 요소(.one li .two) 을 토글 시켜라.
+            }
+        }
+
+
+        $(".one").click(handler).find("ul").hide();
+    // 1단계. one 라는 클래스를 가진 요소를 클릭하게 되면 handler 라는 함수를 동작하게 하라
+    // .one 가 자식으로 가지고 있는 요소들 중에 ul 을 찾아 숨겨라 <- 브라우저가 시작하마자 동작
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+.horizon{
+    display: flex;
+    flex-direction: row;
+}
+.controller{
+    display: inline-block;
+    width:300px;
+    height:768px;
+    background-color: blueviolet;
+}
+.menubar{
+    list-style-type:none;
+}
+table, td{
+    border: 1px solid #dedede;
+    padding: 8px;
+}
+
+table {
+    width: 300px;
+    height:768px;
+}
+td {
+    text-align:center;
+    white-space: nowrap;
+}
+td:hover{
+    background-color:rgb(247, 216, 221);
+}
+#TableTitle{
+    background-color: rgb(214, 241, 215);
+}

@@ -1,0 +1,86 @@
+	.menu_body {
+		/* position: fixed; */
+		
+        overflow:hidden;
+		/* width: 820px; */
+		width:960px;
+        height: 60px;
+		background-color: rgb(117, 116, 116);
+		padding-top: 10px;
+		border-radius: 10px;
+	}
+
+	.menu_bk {
+		height: 50px;
+		background-color: white;
+		margin-left: 10px;
+		margin-right: 10px;
+		position: relative;
+        color: #6e6e6e;
+        font-size:20px;
+        font-weight: bold;
+		border-radius: 6px;
+	}
+
+	.menu_bk > div:hover{
+		color: rgb(76, 8, 121);
+	}
+
+	.menu {
+		width: 150px;
+		height: 50px;
+		display: inline-block;
+		text-align: center;
+		vertical-align: middle;
+		line-height: 50px;
+		cursor: pointer;
+	}
+
+	.triangle_point {
+		width: 0;
+		height: 0;
+		z-index: 999;
+		position: absolute;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-bottom: 8px solid rgb(95, 95, 95);
+		bottom: 0px;
+		transition: transform 800ms;
+		transform: translate(71px, 0);
+    }
+    .menu:hover{
+		background-color: rgb(143, 143, 173);
+		/* background-color: rgb(255, 240, 35); */
+        /* background-color: bisque; */
+    }
+	#divBt_1:hover ~ .triangle_point {
+        transform: translate(71px, 0);
+	}
+
+	#divBt_2:hover ~ .triangle_point {
+		transform: translate(223px, 0);
+	}
+
+	#divBt_3:hover ~ .triangle_point {
+		transform: translate(375px, 0);
+	}
+	
+	#divBt_4:hover ~ .triangle_point {
+		transform: translate(535px, 0);
+	}
+	#divBt_5:hover ~ .triangle_point {
+		transform: translate(695px, 0);
+	}
+	#divBt_6:hover ~ .triangle_point {
+		transform: translate(850px, 0);
+	}
+	.error{
+        overflow:hidden;
+		width: 1024px;
+        height: 60px;
+		background-color: rgb(238, 173, 173);
+		padding-top: 10px;
+		border-radius: 10px;
+		text-align:center;
+		font-size: 30px;
+	}

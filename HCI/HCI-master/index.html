@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HCI calculator_subin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--외부오픈소스라이브러리-->
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src='./js/math.js' type='text/javascript'></script>
+
+
+    <!--직접작성스크립트-->
+    <script src="./js/button.js"></script>
+
+    <!--디자인-->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/dropmenu.css">
+    <link rel="stylesheet" href="./css/cal.css">
+    <link rel="stylesheet" href="./css/popup.css">
+    <link rel="stylesheet" href="./css/etc.css">
+</head>
+
+<body>    
+    <!--도움말 창-->
+    <div class="helpModal hidden">
+        <div class="modal_overlay"></div>
+        <div class="modal_content">
+            <h1>help</h1>
+            <p>()/[] 를 누르고 원하는 수식을 쓴 뒤,  ()/[]버튼을 눌러주세요!</p>
+            <p>save기능을 활용해서 현재 수식을 저장할 수 있어요!</p>
+            <p>c/p기능을 활용해서 원하는 수식을 복사붙여넣기 할 수 있어요!</p>
+            <p>cont 기능을 누르면 history 에서 값을 불러올 때 새롭게 가져오지 않고 이어서 가져올 수 있어요!</p>
+            <button class="closeHelpModal">close</button>
+        </div>
+    </div>
+    <!--헤더-->
+    <header>
+        <div class="title">
+            <h1>
+                <a href="#a"><span class="hide">계산기</span></a>
+                <a href="#a">subin_</a>
+            </h1>
+        </div>
+    </header>
+
+    <!--메인-->
+    <main>
+        <!--히스토리영역-->
+        <div class="history"></div>
+        <!--데코-->
+        <img src="./img/sakura.png" alt="flower" id="flower_left">
+
+        <!--계산기 시작-->
+        <section class="calculator">
+            <!--계산수식 & 계산결과-->
+            <div class="view" id="result"></div><div class="view" id="latex"></div>
+
+            <div class="controller">
+                <div class="menubar" id="menubar1">
+                    <ul>
+                        <li><a href="#">함수</a>
+                            <ul>
+                                <li><a href="#" class="key2">f</a></li>
+                                <li><a href="#" class="key2">g</a></li>
+                                <li><a href="#" class="key2">(x)</a></li>
+                                <li><a href="#" class="key2">(x,y)</a></li>
+                                <li><a href="#" class="key2">(x,y,z)</a></li>
+                                <li><a href="#" class="key2">=</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">삼각함수</a>
+                            <ul>
+                                <li><a href="#" class="key2">sin</a></li>
+                                <li><a href="#" class="key2">cos</a></li>
+                                <li><a href="#" class="key2">tan</a></li>
+                                <li><a href="#" class="key2">arc</a></li>
+                                <li><a href="#" class="key2">h</a></li>
+                                <li><a href="#" class="key2">°</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">행렬</a>
+                            <ul>
+                                <li><a href="#" class="key2">cross</a></li>
+                                <li><a href="#" class="key2">det</a></li>
+                                <li><a href="#" class="key2">inv</a></li>
+                                <li><a href="#" class="key2">[ ]</a></li>
+                                <li><a href="#" class="key2">( )</a></li>
+                                <!-- <li><a href="#" class="key2">;</a></li> -->
+                            </ul>
+                        </li>
+                        <li><a href="#">비교</a>
+                            <ul>
+                                <li><a href="#" class="key2">==</a></li>
+                                <li><a href="#" class="key2">!=</a></li>
+                                <li><a href="#" class="key2">></a></li>
+                                <li><a href="#" class="key2"><</a> </li>
+                                <li><a href="#" class="key2">>=</a></li>
+                                <li><a href="#" class="key2"><=</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menubar" id="menubar2">
+                    <ul>
+                        <li><a href="#">변수</a>
+                            <ul>
+                                <li><a href="#" class="key2">x</a></li>
+                                <li><a href="#" class="key2">y</a></li>
+                                <li><a href="#" class="key2">z</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">기타</a>
+                            <ul>
+                                <li><a href="#" class="key2">%</a></li>
+                                <li><a href="#" class="key2">^</a></li>
+                                <li><a href="#" class="key2">√</a></li>
+                                <li><a href="#" class="key2">abs</a></li>
+                                <li><a href="#" class="key2">exp</a></li>
+                                <li><a href="#" class="key2">pow</a></li>
+                                <li><a href="#" class="key2">ln</a></li>
+                                <li><a href="#" class="key2">log</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">상수</a>
+                            <ul>
+                                <li><a href="#" class="key2">e</a></li>
+                                <li><a href="#" class="key2">pi</a></li>
+                                <li><a href="#" class="key2">i</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">기능</a>
+                            <ul>
+                                <li><a href="#" class="key2">save</a></li>
+                                <li><a href="#" class="key2">clear</a></li>
+                                <li><a href="#" class="key2">cont</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="keys">
+                    <button class="key">1</button>
+                    <button class="key">2</button>
+                    <button class="key">3</button>
+                    <button class="key" id="CL">CL</button>
+
+                    <button class="key">4</button>
+                    <button class="key">5</button>
+                    <button class="key">6</button>
+                    <button class="key" id="z"><</button>
+                    <button class="key">7</button>
+                    <button class="key">8</button>
+                    <button class="key">9</button>
+
+                    <button class="key" id="EV">EV</button>
+                    <button class="key">!</button>
+
+                    <button class="key">0</button>
+                    <button class="key">.</button>
+                    <button class="key">,</button>
+
+                    <button class="key par" id="round">()</button>
+                    <button class="key par" id="square">[]</button>
+                    <button class="key operator">+</button>
+                    <button class="key operator">*</button>
+                    
+                    <button class="key" id="copy">c/p</button>
+                    <button class="key" id="help">?</button>
+                    <button class="key operator">-</button>
+                    <button class="key operator">/</button>
+            </div>
+        </section>
+
+        <div class="made_by">
+            <a href="#pop1" class="btn">made_by</a>
+            <div class="popup" draggable="true" id="pop1">
+                <p>2018203062 김수빈</p>
+                <a href="#a">닫기</a>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

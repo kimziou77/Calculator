@@ -1,0 +1,200 @@
+            td{
+                background-color:rgba(0, 0, 0, 0.6);
+                font-size:30px;
+                color:white;
+                cursor: pointer;
+            }
+            input{
+                font-size:30px;
+            }
+            .can{
+                width:1020px;
+                height:auto;
+                background-color:pink;
+            }
+            .EV:hover{
+                background-color:white;
+                color:black;
+            }
+            .EV, .submit{
+                background-color:rgba(89, 155, 89, 0.637);
+            }
+            .b{
+                display:flex;
+            }
+            .table {
+                width: 500px;
+                height:700px;
+                margin:5px;
+            }
+            .canSupport{
+                width:500px;
+                height: 700px;
+                overflow:scroll;
+                border:1px solid gray;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            .user_chat{
+                width:890px;
+                height:60px;
+            }
+            .button{
+                border: 1px solid gray;
+                text-align: center;
+                position:relative;
+                display: inline-block;
+                background-color:white;
+            }   
+            .button{
+                width:105px;
+                height:62px;
+                margin:0;
+                padding:0;
+                line-height: 3;
+                background-color:rgba(179, 229, 248, 0.801);
+
+            }
+            .del{
+                background-color:rgba(252, 99, 99, 0.788);
+                
+            }
+            .hisdel{
+                background-color:rgba(252, 99, 99, 0.788);
+            }
+            .button:hover{
+                cursor: pointer;
+                background-color:rgb(250, 250, 250);
+
+            }
+            .display{
+                background-color: rgba(0, 0, 0, 0.418);
+                width:1024px;
+                height:90px;
+                border:1px solid gray;
+                font-size:40px;
+                color:white;
+                text-align:center;
+                line-height: 2;
+                overflow-y: scroll;
+            }
+            .history{
+                margin:2.5px;
+                height: 55px;
+                line-height: 2;
+                text-align:center;
+                font-size:30px;
+                letter-spacing: 20px;
+                font-weight: bold;
+                color:gray;
+                overflow: hidden;
+            }
+            .hisdel{
+                position: absolute;
+                left: 350px;
+                margin:20px;
+            }
+                        .ht{
+                /* position:fixed; */
+                margin-top:30px;
+                margin-left:30px;
+                width:40px;
+                height: auto;
+            }
+            .r{
+                display:flex;
+                flex-direction: row;
+            }
+            .hidden{
+                display:none;
+                position: absolute;
+                font-size:30px;
+                padding:10px;
+                
+                /* margin:5px; */
+            }
+            td:hover .hidden{
+                display: block;
+            }
+            a{
+                text-decoration: none;
+                color:white;
+            }
+            ul{
+                background-color:rgba(255, 227, 227, 0.959);
+                list-style: none;
+                width:400px;
+            }
+            .support_header{
+                height: 90px;
+            }
+
+            .hhssttrr{
+                /* border: 1px solid gray; */
+                width: 500px;
+            }
+            .make{
+                display:none;
+            }
+            .make2{
+                width:50px;
+            }
+            .second_step{
+                width:auto;
+                height: auto;
+                /* border: 1px solid gray; */
+            }
+            .life{
+                width: 50px;
+                /* position:relative; */
+                /* left:700px; */
+                float: right;
+                height: auto;
+            }
+            .lion{
+                position:fixed;
+                top:500px;
+
+                /* left:1024px; */
+                z-index: -1;
+            }
+            .miniLion{
+                position:fixed;
+                top:300px;
+                left:1024px;
+                z-index: -1;
+                opacity:0;
+            }
+        .EV:hover ~ .lion {
+            transform: translate(1024px, 0);
+        }
+        html{
+            /* cursor:wait; */
+            /* cursor: url(../img/miniLion.png), auto; */
+            cursor: url(../img/miniLion.png);
+        }
+        body{
+            /* cursor: url(../img/miniLion.png), auto; */
+        }
+        .color{
+            background-color:rgb(255, 225, 151);
+        }
+        .fcolor{
+            color:gray;
+        }
+        .save{
+            background-color:rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin:10px;
+            width:95px;
+            height:65px;
+            color:rgb(197, 197, 197);
+            line-height:2.4;
+            float:right;
+            font-size:25px;
+            cursor: pointer;
+        }
+        .save:hover{
+            background-color:rgb(201, 201, 201);
+            color:black;
+        }

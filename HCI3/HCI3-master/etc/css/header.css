@@ -1,0 +1,46 @@
+
+    header {
+        background: rgb(252, 210, 217);
+        width:980px;
+        padding: 20px;
+        opacity: 0.8;
+        box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.6);
+    }
+    header h1 {
+        display: inline-block;
+        margin: 0;
+        float: left;
+    }
+    header h1 a {
+        display: inline-block;
+        font-size: 24px;
+        color: rgba(24, 24, 24, 0.822);
+        padding: 0 0 0 8px;
+        line-height: 41px;
+        vertical-align: middle;
+        text-transform: uppercase;
+    }
+    header a {
+        vertical-align: middle;
+        margin: 1%;
+    }
+
+    header .title {
+        height: 3rem;
+        border-bottom: 1px solid white;
+    }
+    .hide {
+        line-height: 0;
+        font-size: 0px;
+        overflow: hidden;
+    }
+    .title h1 a {
+        margin: 0 10px;
+        text-decoration: none;
+        font-size:30px;
+        display: inline-block;
+        float: left;
+        width: 35px;
+        height: 35px;
+        vertical-align: middle;
+    }

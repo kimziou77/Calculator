@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.css"> -->
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            padding: 30px;
+        }
+
+        .btn {
+            display: block;
+            width: 200px;
+            height: 50px;
+            background: skyblue;
+            text-decoration: none;
+            text-align: center;
+            line-height: 40px;
+            /*이건 뭐지*/
+            color: white;
+            border-radius: 50px;
+        }
+
+        .popup {
+            width: 500px;
+            height: 500px;
+            background-color: bisque;
+            box-shadow: 0px 0px 10px gray;
+            opacity: 0;
+            transition: all 0.5s;
+            z-index: -1;
+        }
+
+        .popup:target {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .dim {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(0, 0, 0, 0.6);
+            opacity: 0;
+            z-index: -1;
+            transition: 0.1s;
+        }
+    </style>
+
+    <style>
+        div.check {
+            padding: 10px;
+            baorder: 1px solid #000;
+            margin-bottom: 10px;
+            background-color: #ffeed6;
+        }
+
+        p {
+            padding: 10px;
+            border: 1px solid #000;
+            background-color: #d6dfff;
+        }
+
+        strong {
+            padding: 10px;
+            border: 1px solid #000;
+            display: block;
+            background-color: #d6ffdb;
+        }
+
+        span {
+            padding: 10x;
+            border: 1px solid #000;
+            display: block;
+            background-color: #ffddd6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            text-align: center;
+        }
+
+        .one {
+            background-color: #ffddd6;
+            padding: 10px;
+            *zoom: 1;
+        }
+
+        .one:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .one>li {
+            float: left;
+            background-color: #ffffd6;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .two {
+            background-color: #d6ffd9;
+            padding: 10px;
+        }
+
+        .two>li {
+            background-color: #dad6ff;
+        }
+        /* .table{
+            text-align: center;
+        } */
+    </style>
+    
+    </head>
+    
+    <body>
+            <!-- modal 구동 버튼 (trigger) -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#menualPopup">
+                도움말
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="menualPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">도움말</h4>
+                        </div>
+                        <div class="modal-body">
+                            여기다가 메뉴얼을 추가하자.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            메뉴에 마우스 올리면 서브메뉴가 나오고..
+            <br />메뉴에서 마우스가 빠지면 서브메뉴가 감춰짐.
+            <br />단, 마우스가 서브메뉴 안으로 들어가는거면 서브메뉴 유지됨
+            <br />
+            <br />
+            <br />
+            <br />
+            <div id="menu" style="width: 100px; border: 1px solid red;">
+                대메뉴
+            </div>
+            <div id="submenu" style="position: absolute; display: none; width: 100px; border: 1px solid blue;">
+                - 서브메뉴1
+                <br /> - 서브메뉴2
+                <br /> - 서브메뉴3
+            </div>
+            
+            <br />
+            <br />
+            <br />
+            <br />
+            <br /> 보통은 아래처럼 html 구조상 메뉴안에 서브메뉴를 넣는 경우 간단히 hover 하나로 해결되지만 구조상 그렇지 못할 경우에 위 스크립트를 사용함
+            <br />
+            <br />
+            <div id="menu1" style="width: 100px; border: 1px solid red;">
+                대메뉴1-1
+                <div id="submenu1" style="position: absolute; display: none; width: 100px; border: 1px solid blue;">
+                    - 서브메뉴1-1
+                    <br /> - 서브메뉴2-1
+                    <br /> - 서브메뉴3-1
+                </div>
+            </div>
+
+    <script>
+
+        $('#myModalLabel').on('shown.bs.modal', function (e) {
+                alert('Modal is successfully shown!');
+            });
+        
+        $("body").click(function (event) {
+            $("#result").html("무엇을 클릭했을 까요? " + event.target.nodeName);
+        })
+
+        
+        function handler(event) {
+            // 2단계. handler 의 함수를 작성. handler 함수가 호출이 되면 아래와 같은 행동을 하라.
+            var $target = $(event.target);
+            // 현재 클릭했던 요소가 뭔 요소인지 변수 $target 에 담는다.
+            if ($target.is("li")) {
+                // 만약에 $target 이 담고있었던 요소가 li 가 맞다면!
+                $target.children().toggle();
+                // 클릭했던 바로 그 li 의 자식 요소(.one li .two) 을 토글 시켜라.
+            }
+        }
+
+
+        $(".one").click(handler).find("ul").hide();
+    // 1단계. one 라는 클래스를 가진 요소를 클릭하게 되면 handler 라는 함수를 동작하게 하라
+    // .one 가 자식으로 가지고 있는 요소들 중에 ul 을 찾아 숨겨라 <- 브라우저가 시작하마자 동작
+
+
+    </script>
+    <script>
+    $("#menu").hover(function (e) {
+            $("#submenu").show(); //메뉴에 마우스 올라오면 서브메뉴 보여주고
+        }, function (e) {
+            e = e || event;
+            var goingto = e.relatedTarget || e.toElement;
+            if (!goingto || goingto.id != "submenu") {
+                $("#submenu").hide(); //메뉴에서 마우스가 빠질때 마우스가 이동한 영역이 서브메뉴가 아니라면 서브메뉴 감추고
+            }
+        });
+
+        $("#submenu").on("mouseleave", function () {
+            $(this).hide(); //서브메뉴에서도 마우스가 빠지면 서브메뉴 감추고
+        });
+
+        //////////
+        ////////// 메뉴 > 서브메뉴 일때는 아래처럼 간단함
+
+        $("#menu1").hover(function () {
+            $("#submenu1").show();
+        }, function () {
+            $("#submenu1").hide();
+        });
+    </script>
+</body>
+
+</html>

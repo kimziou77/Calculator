@@ -1,0 +1,22 @@
+#flower_left{
+    float: left;
+    /* margin-left:20%; */
+}
+.history{
+    
+    height: 100px;
+    background-color: rgba(255, 228, 249, 0.5);
+    overflow:auto;
+    border-radius: 5px;
+}
+.history button{
+    display: inline-block;
+    width: auto;
+    height: auto;
+    background-color: rgb(247, 228, 255);
+    overflow:hidden;
+    border-radius: 5px;
+}
+.atv{
+        background-color: rgb(147, 64, 216);
+}
